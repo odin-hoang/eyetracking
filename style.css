@@ -1,0 +1,17 @@
+body {
+  background-color: #eee;
+  margin: 0;
+  padding-bottom: 150px;
+  position: relative;
+  scroll-behavior: smooth;
+}
+.file {
+  margin-block: 0px;
+  text-align: center;
+}
+.preview {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding-inline: 150px;
+}
