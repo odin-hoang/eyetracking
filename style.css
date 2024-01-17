@@ -18,3 +18,16 @@ html {
   flex-direction: column;
   padding-inline: 150px;
 }
+.dot {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(18, 229, 29);
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  left: 200px;
+  cursor: pointer;
+}
+.dot:active {
+  background-color: rgb(18, 229, 29, 0.8);
+}

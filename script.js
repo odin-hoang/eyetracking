@@ -8,6 +8,7 @@ let lookDirection = null;
 webgazer
   .setGazeListener((data, timestamp) => {
     if (data === null || lookDirection === "STOP") return;
+
     if (
       data.y < TOP_CUTOFF &&
       lookDirection !== "TOP" &&
@@ -86,4 +87,89 @@ function displayPDF() {
     // Display a message if no file is selected
     preview.innerHTML = "No file selected";
   }
+}
+
+let clickCount = 0;
+const dotElement = document.getElementById("clickDot");
+const alpha = 5;
+dotElement.addEventListener("click", function () {
+  clickCount++;
+
+  if (clickCount === alpha) {
+    moveToMidBottom();
+  } else if (clickCount === 2 * alpha) {
+    moveToBottomRight();
+  } else if (clickCount === 3 * alpha) {
+    moveToMidRight();
+  } else if (clickCount === 4 * alpha) {
+    moveToMidTop();
+  } else if (clickCount === 5 * alpha) {
+    moveToLeftTop();
+  } else if (clickCount === 6 * alpha) {
+    moveToCenter();
+  } else if (clickCount === 7 * alpha) {
+    moveToCenterRight();
+  } else if (clickCount === 8 * alpha) {
+    moveToCenterLeft();
+  } else if (clickCount > 9 * alpha) {
+    dotElement.style.display = "none";
+  }
+});
+
+function moveToMidBottom() {
+  const screenWidth = window.innerWidth;
+  const dotWidth = 30;
+  const middleLeft = (screenWidth - dotWidth) / 2;
+
+  // Move the dot to the middle of the screen
+  dotElement.style.left = middleLeft + "px";
+}
+
+function moveToBottomRight() {
+  const screenWidth = window.innerWidth;
+  const dotWidth = 30;
+  const middleLeft = screenWidth - dotWidth - 200;
+
+  // Move the dot to the middle of the screen
+  dotElement.style.left = middleLeft + "px";
+}
+function moveToMidRight() {
+  const screenHeight = window.innerHeight;
+  const dotHeight = 30;
+  const middleTop = screenHeight - dotHeight - 20;
+
+  dotElement.style.bottom = middleTop + "px";
+}
+function moveToMidTop() {
+  const screenWidth = window.innerWidth;
+  const dotWidth = 30;
+  const middleLeft = (screenWidth - dotWidth) / 2;
+
+  // Move the dot to the middle of the screen
+  dotElement.style.left = middleLeft + "px";
+}
+function moveToLeftTop() {
+  // Move the dot to the middle of the screen
+  dotElement.style.left = 350 + "px";
+}
+function moveToCenter() {
+  const screenWidth = window.innerWidth;
+  const dotWidth = 30;
+  const middleLeft = (screenWidth - dotWidth) / 2;
+  const screenHeight = window.innerHeight;
+  const dotHeight = 30;
+  const middleTop = (screenHeight - dotHeight) / 2;
+  dotElement.style.bottom = middleTop + "px";
+  dotElement.style.left = middleLeft + "px";
+}
+function moveToCenterRight() {
+  const screenWidth = window.innerWidth;
+  const dotWidth = 30;
+  const middleLeft = screenWidth - dotWidth - 200;
+
+  // Move the dot to the middle of the screen
+  dotElement.style.left = middleLeft + "px";
+}
+function moveToCenterLeft() {
+  dotElement.style.left = 200 + "px";
 }
