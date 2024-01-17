@@ -5,6 +5,9 @@ body {
   position: relative;
   scroll-behavior: smooth;
 }
+html {
+  scroll-behavior: smooth;
+}
 .file {
   margin-block: 0px;
   text-align: center;
