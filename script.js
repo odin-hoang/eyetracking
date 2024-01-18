@@ -1,4 +1,9 @@
 window.saveDataAcrossSessions = true;
+
+let clickCount = 0;
+const dotElement = document.getElementById("clickDot");
+const alpha = 5;
+
 const LOOK_DELAY = 1000; // milliseconds
 const TOP_CUTOFF = window.innerHeight / 4;
 const BOTTOM_CUTOFF = window.innerHeight - window.innerHeight / 4;
@@ -7,8 +12,9 @@ let startLookTime = Number.POSITIVE_INFINITY;
 let lookDirection = null;
 webgazer
   .setGazeListener((data, timestamp) => {
-    if (data === null || lookDirection === "STOP") return;
-
+    if (data === null || lookDirection === "STOP") {
+      return;
+    }
     if (
       data.y < TOP_CUTOFF &&
       lookDirection !== "TOP" &&
@@ -89,9 +95,6 @@ function displayPDF() {
   }
 }
 
-let clickCount = 0;
-const dotElement = document.getElementById("clickDot");
-const alpha = 5;
 dotElement.addEventListener("click", function () {
   clickCount++;
 
